@@ -1,8 +1,8 @@
 import { FiUser } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectVisibleContacts } from 'redux/contacts/selectors';
-// import { getFilter } from 'redux/filter/selectors';
+import {  selectVisibleContacts } from 'redux/contacts/selectors';
+// import { selectFilter } from 'redux/filter/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 
 import { Contact } from './ContactsList.styled';
@@ -10,7 +10,8 @@ import { Contact } from './ContactsList.styled';
 export const ContactsList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectVisibleContacts);
-  // const { filter } = useSelector(getFilter);
+  // const { filter } = useSelector(selectFilter);
+  // console.log(contacts)
 
   const handleDeleteContact = contactId => dispatch(deleteContact(contactId));
 
@@ -20,7 +21,7 @@ export const ContactsList = () => {
 
   return (
     <ul>
-      {contacts.map(({ id, name, number }) => (
+      {contacts?.map(({ id, name, number }) => (
         <Contact key={id}>
           <FiUser />
           {name}: {number}
