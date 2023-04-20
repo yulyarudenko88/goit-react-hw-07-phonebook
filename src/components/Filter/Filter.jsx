@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getFilter } from 'redux/filter/selectors';
+import {selectFilter } from 'redux/filter/selectors';
 import { setFilter } from 'redux/filter/filterSlice';
 
 import {
@@ -12,7 +12,7 @@ import {
 
 export const Filter = ({ value, onChange }) => {
   const dispatch = useDispatch();
-  const {filter} = useSelector(getFilter);
+  const {filter} = useSelector(selectFilter);
 
   const changeFilter = e => dispatch(setFilter(e.target.value));
 
